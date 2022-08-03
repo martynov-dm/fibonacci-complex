@@ -1,0 +1,18 @@
+language: generic
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t martynovdm/fib-react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true martynovdm/fib-react-test npm test
+after_success:
+  - docker build -t martynovdm/fib-client ./client
+  - docker build -t martynovdm/fib-nginx ./nginx
+  - docker build -t martynovdm/fib-server ./server
+  - docker build -t martynovdm/fib-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push martynovdm/fib-client
+  - docker push martynovdm/fib-nginx
+  - docker push martynovdm/fib-server
+  - docker push martynovdm/fib-worker
