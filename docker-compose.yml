@@ -1,11 +1,11 @@
 version: "3.9"
 services:
   client:
-    image: "martynovdm/multi-client-10-14"
+    image: "martynovdm/fib-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "cygnetops/multi-server-10-14"
+    image: "martynovdm/fib-server"
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "cygnetops/multi-worker-10-14"
+    image: "martynovdm/fib-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "cygnetops/multi-nginx-10-14"
+    image: "martynovdm/fib-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
