@@ -4,7 +4,7 @@ services:
     image: "martynovdm/fib-client"
     mem_limit: 128m
     hostname: client
-  api:
+  server:
     image: "martynovdm/fib-server"
     mem_limit: 128m
     hostname: api
