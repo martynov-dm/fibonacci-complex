@@ -13,7 +13,7 @@ function App() {
       <Router>
         <div className="App">
           <header className="App-header">
-            <Link to="/">TESTING DEPL - not working(</Link>
+            <Link to="/">TESTING DEPLoy</Link>
             <Link to="/otherpage">Other Page</Link>
           </header>
           <div>
